@@ -1,0 +1,10 @@
+profile apparmor-profile flags=(attach_disconnected,mediate_deleted) {
+  # Deny all network access
+  deny network,
+
+  # Allow read access to specific directories
+  audit read, /etc/** rw,
+
+  # Restrict file writes except for specific paths
+  deny /tmp/** rwx,
+}
