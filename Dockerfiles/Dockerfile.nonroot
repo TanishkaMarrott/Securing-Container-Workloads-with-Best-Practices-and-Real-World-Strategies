@@ -1,0 +1,10 @@
+FROM alpine:3.14
+RUN apk --no-cache add bash
+COPY ./app /app
+WORKDIR /app
+
+# Create a non-root user
+RUN addgroup -S appgroup && adduser -S appuser -G appgroup
+USER appuser
+
+CMD ["./run.sh"]
