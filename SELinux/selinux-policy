@@ -1,0 +1,9 @@
+module container-policy 1.0;
+
+require {
+    type container_t;
+    type sensitive_dir_t;
+}
+
+# Deny write access to sensitive_dir
+allow container_t sensitive_dir_t:dir { read open };
